@@ -23,7 +23,8 @@ NC='\033[0m'
 function download_node() {
   echo -e "Prepare to download ${GREEN}$COIN_NAME${NC}."
   cd $TMP_FOLDER >/dev/null 2>&1
-  tar xvzf $COIN_TGZ --strip 1 -C $COIN_PATH >/dev/null 2>&1
+  wget -q $COIN_TGZ
+  tar xvzf $COIN_ZIP --strip 1 -C $COIN_PATH >/dev/null 2>&1
   compile_error
   chmod +x $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI >/dev/null 2>&1
   cd - >/dev/null 2>&1
